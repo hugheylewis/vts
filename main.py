@@ -1,10 +1,11 @@
 import csv
 import requests
 import re
+import time
 
 with open('query_data.csv') as qdata:
     data = csv.reader(qdata, delimiter=',')
-    next(data, None)
+    next(data, None)  # skips the header
     for row in data:
         url = f"https://www.virustotal.com/api/v3/domains/{row[0]}"
 
@@ -20,5 +21,6 @@ with open('query_data.csv') as qdata:
 
         if match:
             print(f"VirusTotal score for {row[0]}: {match.group(1)}")
+        time.sleep(15)
 
 
