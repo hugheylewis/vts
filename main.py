@@ -19,6 +19,7 @@ with open('query_data.csv') as qdata:
         response_data = response.text
         match = re.search(pattern, response_data)
 
+        # print(response_data)  # uncomment to troubleshoot or view the full JSON response
         if match:
             print(f"VirusTotal score for {row[0]}: {match.group(1)}")
         time.sleep(15)
